@@ -2,25 +2,29 @@
 A jQuery Plugin to make masks on form fields and HTML elements with some mask defined.
 
 #Basic Usage Examples
-$ $(document).ready(function(){
-$   $('element').mask('11/11/1111'); //Date
-$   $('element').mask('00:00:00'); //Time
-$   $('element').mask('00/00/0000 00:00:00'); //Date_Time
-$   $('element').mask('00000-000'); //Cep
-$   $('element').mask('0000-0000'); //Phone
-$   $('element').mask('(00) 0000-0000'); //Phone_DDD
-$   $('element').mask('AAA 000-S0S');
-$   $('element').mask('000.000.000-00', {reverse: true}); //Cpf
-$   $('element').mask('000.000.000.000.000,00', {reverse: true}); //Money
-$   $('element').mask("#.##0,00", {reverse: true, maxlength: false}); //Money
-$   $('element').mask('##0,00%', {reverse: true}); //Percent
-$ );
+<script>
+$(document).ready(function(){
+  $('element').mask('11/11/1111'); //Date
+  $('element').mask('00:00:00'); //Time
+  $('element').mask('00/00/0000 00:00:00'); //Date_Time
+  $('element').mask('00000-000'); //Cep
+  $('element').mask('0000-0000'); //Phone
+  $('element').mask('(00) 0000-0000'); //Phone_DDD
+  $('element').mask('AAA 000-S0S');
+  $('element').mask('000.000.000-00', {reverse: true}); //Cpf
+  $('element').mask('000.000.000.000.000,00', {reverse: true}); //Money
+  $('element').mask("#.##0,00", {reverse: true, maxlength: false}); //Money
+  $('element').mask('##0,00%', {reverse: true}); //Percent
+);
+</script>
 
-Mask using data-mask attribute
+##Mask using data-mask attribute
 To get your mask applied with the data-mask attribute just use it as the same way you use with the $.mask function. 
 
 You can put on your own:
-<input type="text" data-inputmask="#####-###"/><br>
+<script>
+  <input type="text" data-inputmask="#####-###"/><br>
+</script>
 
 Or use some defined types:
 <input type="text" name="field-name" data-inputmask="celular" /><br>
