@@ -46,37 +46,105 @@
 
 
       <section id="main_content">
-        <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+        <h1>
+<a name="arcnet-simple-mask-plugin" class="anchor" href="#arcnet-simple-mask-plugin"><span class="octicon octicon-link"></span></a>Arcnet Simple Mask Plugin</h1>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+<p>A jQuery Plugin to make masks on form fields and HTML elements with some mask defined.</p>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
+<h2>
+<a name="compatibility" class="anchor" href="#compatibility"><span class="octicon octicon-link"></span></a>Compatibility</h2>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+<p>Jquery Arcnet Simple Mask Plugin has been tested with jQuery 1.7+ on all major browsers:</p>
+
+<ul>
+<li>Firefox 2+ (Win, Mac, Linux);</li>
+<li>IE7+ (Win);</li>
+<li>Chrome 6+ (Win, Mac, Linux, Android, iPhone);</li>
+<li>Safari 3.2+ (Win, Mac, iPhone);</li>
+<li>Opera 8+ (Win, Mac, Linux, Android, iPhone).</li>
+</ul><h2>
+<a name="basic-usage-examples" class="anchor" href="#basic-usage-examples"><span class="octicon octicon-link"></span></a>Basic Usage Examples</h2>
+
+<div class="highlight highlight-bash"><pre><span class="k">$(</span>document<span class="k">)</span>.ready<span class="o">(</span><span class="k">function</span><span class="o">(){</span>
+  <span class="k">$(</span><span class="s1">'element'</span><span class="k">)</span>.mask<span class="o">(</span><span class="s1">'11/11/1111'</span><span class="o">)</span><span class="p">;</span> //Date
+  <span class="k">$(</span><span class="s1">'element'</span><span class="k">)</span>.mask<span class="o">(</span><span class="s1">'00:00:00'</span><span class="o">)</span><span class="p">;</span> //Time
+  <span class="k">$(</span><span class="s1">'element'</span><span class="k">)</span>.mask<span class="o">(</span><span class="s1">'00/00/0000 00:00:00'</span><span class="o">)</span><span class="p">;</span> //Date_Time
+  <span class="k">$(</span><span class="s1">'element'</span><span class="k">)</span>.mask<span class="o">(</span><span class="s1">'00000-000'</span><span class="o">)</span><span class="p">;</span> //Cep
+  <span class="k">$(</span><span class="s1">'element'</span><span class="k">)</span>.mask<span class="o">(</span><span class="s1">'0000-0000'</span><span class="o">)</span><span class="p">;</span> //Phone
+  <span class="k">$(</span><span class="s1">'element'</span><span class="k">)</span>.mask<span class="o">(</span><span class="s1">'(00) 0000-0000'</span><span class="o">)</span><span class="p">;</span> //Phone_DDD
+  <span class="k">$(</span><span class="s1">'element'</span><span class="k">)</span>.mask<span class="o">(</span><span class="s1">'AAA 000-S0S'</span><span class="o">)</span><span class="p">;</span>
+  <span class="k">$(</span><span class="s1">'element'</span><span class="k">)</span>.mask<span class="o">(</span><span class="s1">'000.000.000-00'</span>, <span class="o">{</span>reverse: <span class="nb">true</span><span class="o">})</span><span class="p">;</span> //Cpf
+  <span class="k">$(</span><span class="s1">'element'</span><span class="k">)</span>.mask<span class="o">(</span><span class="s1">'000.000.000.000.000,00'</span>, <span class="o">{</span>reverse: <span class="nb">true</span><span class="o">})</span><span class="p">;</span> //Money
+  <span class="k">$(</span><span class="s1">'element'</span><span class="k">)</span>.mask<span class="o">(</span><span class="s2">"#.##0,00"</span>, <span class="o">{</span>reverse: <span class="nb">true</span>, maxlength: <span class="nb">false</span><span class="o">})</span><span class="p">;</span> //Money
+  <span class="k">$(</span><span class="s1">'element'</span><span class="k">)</span>.mask<span class="o">(</span><span class="s1">'##0,00%'</span>, <span class="o">{</span>reverse: <span class="nb">true</span><span class="o">})</span><span class="p">;</span> //Percent
+</pre></div>
 
 <h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+<a name="reverse-attribute" class="anchor" href="#reverse-attribute"><span class="octicon octicon-link"></span></a>Reverse Attribute</h3>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<p>With this attribute the mask will be placed from the right to the left (that's why reverse:true is defined).</p>
 
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+<h2>
+<a name="mask-using-data-mask-attribute" class="anchor" href="#mask-using-data-mask-attribute"><span class="octicon octicon-link"></span></a>Mask using data-mask attribute</h2>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<p>To get your mask applied with the data-mask attribute just use it as the same way you use with the $.mask function. </p>
 
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+<p>You can put on your own:</p>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<div class="highlight highlight-bash"><pre>  &lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"#####-###"</span>/&gt;
+</pre></div>
 
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+<p>Or use some defined types:</p>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+<div class="highlight highlight-bash"><pre>&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> <span class="nv">name</span><span class="o">=</span><span class="s2">"field-name"</span> data-inputmask<span class="o">=</span><span class="s2">"celular"</span> /&gt;
+&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> <span class="nv">name</span><span class="o">=</span><span class="s2">"field-name"</span> data-inputmask<span class="o">=</span><span class="s2">"cellphone"</span> /&gt;
+
+&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"cnpj"</span>/&gt;
+
+&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"cpf"</span>/&gt;
+
+&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"telefone"</span>/&gt;
+&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"phone"</span>/&gt;
+
+&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"fax"</span>/&gt;
+
+&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"ncm"</span>/&gt;
+
+&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"dinheiro"</span>/&gt; //this mask is not real <span class="nb">time </span>typing
+&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"money"</span>/&gt;
+
+&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"dinheiro3"</span>/&gt; //this mask is real <span class="nb">time </span>typing :<span class="o">)</span>
+&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"money3"</span>/&gt;
+
+&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"data"</span>/&gt;
+&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"date"</span>/&gt;
+
+&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"hora"</span>/&gt;
+&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"time"</span>/&gt;
+
+&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"data_hora"</span>/&gt;
+&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"date_time"</span>/&gt;
+
+&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"cep"</span>/&gt;
+
+&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"porcentagem"</span>/&gt;
+&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"percent"</span>/&gt;
+</pre></div>
+
+<p>You also can restrict some letters and types.</p>
+
+<div class="highlight highlight-bash"><pre>&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"numeros"</span>/&gt; //Receives only numbers.
+&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"numbers"</span>/&gt;
+
+&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"letras"</span>/&gt; //Receives only letters.
+&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"letters"</span>/&gt;
+
+&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"alfanumerico"</span>/&gt; //Receives only alphanumeric.
+&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"alphanumeric"</span>/&gt;
+
+&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask-restrict<span class="o">=</span><span class="s2">"qwerty"</span>/&gt; //Restricts the letters in the parameter
+&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask-restrict<span class="o">=</span><span class="s2">"asdfg"</span>/&gt;
+</pre></div>
       </section>
 
       <footer>
