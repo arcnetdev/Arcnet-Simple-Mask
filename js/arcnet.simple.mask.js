@@ -125,6 +125,15 @@
                 if ("function" === typeof g.onComplete && b.length === h.length) g.onComplete(b, c, a, g)
             }
         };
+
+        w = {
+            isNumber: function(evt){
+                var charCode = (evt.which) ? evt.which : event.keyCode;
+                if (charCode > 31 && (charCode < 48 || charCode > 57))
+                    return false;
+                return true;
+            }
+        }
         k.remove = function () {
             d.destroyEvents();
             d.val(k.getCleanVal()).removeAttr("maxlength")
@@ -164,17 +173,24 @@
     });
 
     $('[data-inputmask^="#"]').mask($('[data-inputmask^="#"]').data("inputmask"));
-    $('[data-inputmask="cnpj"]').mask("##.###.###/####-##");
-    $('[data-inputmask="cpf"]').mask("###.###.###-##");
-    $('[data-inputmask="telefone"], [data-inputmask="phone"]').mask("(##) ####-####");
-    $('[data-inputmask="fax"]').mask("(##) ####-####");
-    $('[data-inputmask="ncm"]').mask("########");
+    $('[data-inputmask="cnpj"]').mask("00.000.000/0000-00");
+    $('[data-inputmask="cpf"]').mask("000.000.000-00");
+    $('[data-inputmask="telefone"], [data-inputmask="phone"]').mask("(00) 0000-0000");
+    $('[data-inputmask="fax"]').mask("(00) 0000-0000");
+    $('[data-inputmask="ncm"]').mask("00000000");
+    $('[data-inputmask="data"]').mask("00/00/0000");
+    $('[data-inputmask="date"]').mask("0000/00/00");
+    $('[data-inputmask="hora"]').mask("00:00:00");
+    $('[data-inputmask="time"]').mask("00:00:00");
+    $('[data-inputmask="data_hora"]').mask("00/00/0000 00:00:00");
+    $('[data-inputmask="date_time"]').mask("0000/00/00 00:00:00");
+    $('[data-inputmask="cep"]').mask("00000-000");
+    $('[data-inputmask="porcetagem"], [data-inputmask="percent"]').mask('##0,00%', {reverse: true, maxlength: false});
     $('[data-inputmask="dinheiro"], [data-inputmask="money"]').mask("#.##0,00", {reverse: true, maxlength: false});
+
+
     $('[data-inputmask="numeros"], [data-inputmask="numbers"]').keypress(function(evt){
-        var charCode = (evt.which) ? evt.which : event.keyCode;
-        if (charCode > 31 && (charCode < 48 || charCode > 57))
-            return false;
-        return true;
+        return w.isNumber(evt);
     });
 
     $('[data-inputmask="letras"], [data-inputmask="letters"]').keypress(function(evt){
@@ -187,6 +203,84 @@
         }
         return true;
     });
+
+    $('[data-inputmask="money3"], [data-inputmask="dinheiro3"]').val('0,00');
+    $('[data-inputmask="money3"], [data-inputmask="dinheiro3"]').keypress(function(evento){
+        if(!w.isNumber(evento))
+            return false;
+
+        var posto = false;
+        var keyCode = (evento.keyCode ? evento.keyCode : evento.which ? evento.which : evento.charCode);
+        var letter = String.fromCharCode( evento.keyCode || evento.which );
+        if(document.getSelection().toString() != '')
+            $(this).val('0,00');
+
+        if (letter.length < 10 || keyCode == 8 || keyCode == 46 || keyCode == 9) {
+            if ((keyCode >= 48 && keyCode <= 57) || (keyCode >= 96 && keyCode <= 105) || keyCode == 8 || keyCode == 46) {
+                var resultado;
+                resultado = $(this).val() + letter;
+                resultado = resultado.replace(",", "").replace(".", "");
+
+                while (resultado.substring(0, 1) == "0") {
+                    resultado = resultado.substring(1, resultado.length);
+                }
+
+                var r;
+                switch(resultado.length){
+                    case 0:
+                        var end = resultado;
+                        r = (posto) ? "0,000" : "0,00";
+                        break;
+                    case 1:
+                        var end = resultado;
+                        r = (posto) ? ("0,00" + end) : ("0,0" + end);
+                        break;
+                    case 2:
+                        var end = resultado;
+                        r = (posto) ? ("0,0" + end) : ("0," + end);
+                        break;
+                    case 3:
+                        if(posto){
+                            var end = resultado;
+                            r = "0," + end;
+                        } else{
+                            var ini = resultado.substring(0, (resultado.length - 2));
+                            var end = resultado.substring(resultado.length - 2);
+
+                            r = ini +","+ end;
+                        }
+                        break;
+                    default:
+                        var ini = resultado.substring(0, (resultado.length - ((posto) ? 3 : 2)));
+                        var end = resultado.substring(resultado.length - ((posto) ? 3 : 2));
+                        r = ini +","+ end;
+                        break;
+                }
+                $(this).val(r);
+                if (resultado.length >= 6)
+                    $(this).mask("#.##0,00", {reverse: true, maxlength: false});
+                return false;
+            }
+        }
+    }).keydown(function(evento){
+            var keyCode = (evento.keyCode ? evento.keyCode : evento.which ? evento.which : evento.charCode);
+            var val = "";
+            size = $(this).val().replace(",", "").replace(".", "").length
+            number = $(this).val().replace(",", "").replace(".", "").substring(0, size - 1)
+            if(size <= 3)
+                if (keyCode === 8){
+                    switch  (size - 1){
+                        case 3:
+                            val = "0,0" + number
+                            break;
+                        case 2:
+                            val = "0," + number
+                            break;
+                    }
+                    $(this).val(val);
+                    return false;
+                }
+        });
 
     $('[data-inputmask="alfanumerico"], [data-inputmask="alphanumeric"]').keypress(function(evt){
         e = evt || window.event;
@@ -212,5 +306,6 @@
         })
         return returns;
     });
+
 })(window.jQuery || window.Zepto);
 

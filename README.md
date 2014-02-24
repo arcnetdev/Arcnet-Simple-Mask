@@ -28,7 +28,8 @@ $(document).ready(function(){
   $('element').mask("#.##0,00", {reverse: true, maxlength: false}); //Money
   $('element').mask('##0,00%', {reverse: true}); //Percent
 ```
-
+##Reverse Attribute
+With example above the mask will be placed from the right to the left (that's why reverse:true is defined). As soon as you start typing, a "0,00" will be applied followed by repeating recursively the following pattern "#.##". The result could be something like: 1.234.567,890.
 
 ##Mask using data-mask attribute
 To get your mask applied with the data-mask attribute just use it as the same way you use with the $.mask function. 
