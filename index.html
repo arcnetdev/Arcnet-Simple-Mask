@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=640" />
 
     <link rel="stylesheet" href="stylesheets/core.css" media="screen"/>
+    <link rel="stylesheet" href="stylesheets/bootstrap-theme.css" media="screen"/>
     <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-device-width:640px)"/>
     <link rel="stylesheet" href="stylesheets/pygment_trac.css"/>
 
@@ -53,33 +54,184 @@
 
 <h2>
   <a name="demo" class="anchor" href="#compatibility"><span class="octicon octicon-link"></span></a>Demo</h2>
-          <input type="text" name="field-name" data-inputmask="celular" /> <br>
-
-          <input type="text" data-inputmask="cnpj"/><br>
-
-          <input type="text" data-inputmask="cpf"/><br>
-
-          <input type="text" data-inputmask="telefone"/><br>
-
-          <input type="text" data-inputmask="fax"/><br>
-
-          <input type="text" data-inputmask="ncm"/><br>
-
-          <input type="text" data-inputmask="dinheiro"/><br>
-
-          <input type="text" data-inputmask="dinheiro3"/><br>
-
-          <input type="text" data-inputmask="data"/><br>
-
-          <input type="text" data-inputmask="hora"/><br>
-
-          <input type="text" data-inputmask="data_hora"/><br>
-
-          <input type="text" data-inputmask="cep"/><br>
-
-          <input type="text" data-inputmask="porcentagem"/><br>
+          <form class="form-horizontal" role="form">
+          <div class="form-group">
+              <label class="col-sm-2 control-label">Cellphone</label>
+              <div class="col-sm-10">
+                  <input type="text" name="field-name" data-inputmask="celular" class="form-control"/>
+                  <div class="highlight highlight-bash">
+                      <pre>
+&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"celular"</span> /&gt;
+&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"cellphone"</span> /&gt;
+                      </pre>
+                  </div>
+              </div>
+          </div>
 
 
+          <div class="form-group">
+              <label class="col-sm-2 control-label">Cnpj</label>
+              <div class="col-sm-10">
+                  <input type="text" data-inputmask="cnpj" class="form-control"/>
+                  <div class="highlight highlight-bash">
+                      <pre>
+&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"cnpj"</span>/&gt;
+                      </pre>
+                  </div>
+              </div>
+          </div>
+
+          <div class="form-group">
+              <label class="col-sm-2 control-label">Cpf</label>
+              <div class="col-sm-10">
+                  <input type="text" data-inputmask="cpf" class="form-control"/>
+                  <div class="highlight highlight-bash">
+                      <pre>
+&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"cpf"</span>/&gt;
+                      </pre>
+                  </div>
+              </div>
+          </div>
+
+          <div class="form-group">
+              <label class="col-sm-2 control-label">Telephone</label>
+              <div class="col-sm-10">
+                  <input type="text" data-inputmask="telefone" class="form-control"/>
+                  <div class="highlight highlight-bash">
+                      <pre>
+&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"phone"</span>/&gt;
+&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"telefone"</span>/&gt;
+                      </pre>
+                  </div>
+              </div>
+          </div>
+
+          <div class="form-group">
+              <label class="col-sm-2 control-label">Fax</label>
+              <div class="col-sm-10">
+                  <input type="text" data-inputmask="fax" class="form-control"/>
+                  <div class="highlight highlight-bash">
+                      <pre>
+&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"fax"</span>/&gt;
+                      </pre>
+                  </div>
+              </div>
+          </div>
+
+          <div class="form-group">
+              <label class="col-sm-2 control-label">Ncm</label>
+              <div class="col-sm-10">
+                  <input type="text" data-inputmask="ncm" class="form-control"/>
+                  <div class="highlight highlight-bash">
+                      <pre>
+&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"ncm"</span>/&gt;
+                      </pre>
+                  </div>
+              </div>
+          </div>
+
+              <div class="form-group">
+                  <label class="col-sm-2 control-label">Money</label>
+                  <div class="col-sm-10">
+                      <input type="text" data-inputmask="dinheiro" class="form-control"/>
+                      <div class="highlight highlight-bash">
+                      <pre>
+&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"dinheiro"</span>/&gt;
+&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"money"</span>/&gt;
+<small>(Not real time typing)</small>
+                      </pre>
+                      </div>
+                  </div>
+              </div>
+
+
+              <div class="form-group">
+                  <label class="col-sm-2 control-label">Money2 </label>
+                  <div class="col-sm-10">
+                      <input type="text" data-inputmask="dinheiro3" class="form-control"/>
+                      <div class="highlight highlight-bash">
+                      <pre>
+&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"dinheiro3"</span>/&gt;
+&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"money3"</span>/&gt;
+<small>(Real time typing)</small>
+                      </pre>
+                      </div>
+                  </div>
+              </div>
+
+
+              <div class="form-group">
+                  <label class="col-sm-2 control-label">Date</label>
+                  <div class="col-sm-10">
+                      <input type="text" data-inputmask="data" class="form-control"/>
+                      <div class="highlight highlight-bash">
+                      <pre>
+&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"date"</span>/&gt;
+&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"data"</span>/&gt;
+                      </pre>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="form-group">
+                  <label class="col-sm-2 control-label">Time</label>
+                  <div class="col-sm-10">
+                      <input type="text" data-inputmask="hora" class="form-control"/>
+                      <div class="highlight highlight-bash">
+                      <pre>
+&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"time"</span>/&gt;
+&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"tempo"</span>/&gt;
+                      </pre>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="form-group">
+                  <label class="col-sm-2 control-label">Date/Time</label>
+                  <div class="col-sm-10">
+                      <input type="text" data-inputmask="data_hora" class="form-control"/>
+                      <div class="highlight highlight-bash">
+                      <pre>
+&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"date_time"</span>/&gt;
+&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"data_hora"</span>/&gt;
+                      </pre>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="form-group">
+                  <label class="col-sm-2 control-label">Cep</label>
+                  <div class="col-sm-10">
+                      <input type="text" data-inputmask="cep" class="form-control"/>
+                      <div class="highlight highlight-bash">
+                      <pre>
+&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"cep"</span>/&gt;
+                      </pre>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="form-group">
+                  <label class="col-sm-2 control-label">Percent</label>
+                  <div class="col-sm-10">
+                      <input type="text" data-inputmask="porcentagem" class="form-control"/>
+                      <div class="highlight highlight-bash">
+                      <pre>
+&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"percent"</span>/&gt;
+&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"porcentagem"</span>/&gt;
+                      </pre>
+                      </div>
+                  </div>
+              </div>
+
+
+
+
+
+
+
+
+        </form>
 <h2>
 <a name="compatibility" class="anchor" href="#compatibility"><span class="octicon octicon-link"></span></a>Compatibility</h2>
 
