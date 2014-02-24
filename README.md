@@ -28,8 +28,8 @@ $(document).ready(function(){
   $('element').mask("#.##0,00", {reverse: true, maxlength: false}); //Money
   $('element').mask('##0,00%', {reverse: true}); //Percent
 ```
-##Reverse Attribute
-With example above the mask will be placed from the right to the left (that's why reverse:true is defined). As soon as you start typing, a "0,00" will be applied followed by repeating recursively the following pattern "#.##". The result could be something like: 1.234.567,890.
+###Reverse Attribute
+With this attribute the mask will be placed from the right to the left (that's why reverse:true is defined).
 
 ##Mask using data-mask attribute
 To get your mask applied with the data-mask attribute just use it as the same way you use with the $.mask function. 
@@ -55,8 +55,25 @@ Or use some defined types:
 
 <input type="text" data-inputmask="ncm"/>
 
-<input type="text" data-inputmask="dinheiro"/>
+<input type="text" data-inputmask="dinheiro"/> //this mask is not real time typing
 <input type="text" data-inputmask="money"/>
+
+<input type="text" data-inputmask="dinheiro3"/> //this mask is real time typing :)
+<input type="text" data-inputmask="money3"/>
+
+<input type="text" data-inputmask="data"/>
+<input type="text" data-inputmask="date"/>
+
+<input type="text" data-inputmask="hora"/>
+<input type="text" data-inputmask="time"/>
+
+<input type="text" data-inputmask="data_hora"/>
+<input type="text" data-inputmask="date_time"/>
+
+<input type="text" data-inputmask="cep"/>
+
+<input type="text" data-inputmask="porcentagem"/>
+<input type="text" data-inputmask="percent"/>
 ```
 
 You also can restrict some letters and types.
