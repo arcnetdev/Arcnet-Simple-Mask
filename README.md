@@ -1,6 +1,9 @@
 #Arcnet Simple Mask Plugin
 A jQuery Plugin to make masks on form fields and HTML elements with some mask defined.
 
+##Demo
+http://arcnetdev.github.io/Arcnet-Simple-Mask/
+
 ##Compatibility
 
 Jquery Arcnet Simple Mask Plugin has been tested with jQuery 1.7+ on all major browsers:
@@ -103,7 +106,7 @@ You also can restrict some letters and types.
 #License
 Created by Weslley Neri on 2014-02-20 - https://github.com/weslley39
 
- Copyright (c) 2014 Arcnet - Automação Comercial
+ Copyright (c) 2014 Arcnet - Automação Comercial (http://arcnet.com.br/)
 
  The MIT License (http://www.opensource.org/licenses/mit-license.php)
 
