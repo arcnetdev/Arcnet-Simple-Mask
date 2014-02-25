@@ -540,3 +540,7 @@ textarea.form-control {
         top: 0;
     }
 }
+.form-horizontal{
+    margin-left: 14px;
+    margin-right: 14px;
+}

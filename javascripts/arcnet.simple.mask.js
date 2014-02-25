@@ -56,18 +56,18 @@
                 b.setSelectionRange ? (b.focus(), b.setSelectionRange(c, c)) : b.createTextRange && (b = b.createTextRange(), b.collapse(!0), b.moveEnd("character", c), b.moveStart("character", c), b.select())
             },
             events: function () {
-                a.on("keydown.mask", function () {
+                a.on("keydown.arcnetmask", function () {
                     x = d.val()
                 });
-                a.on("keyup.mask", d.behaviour);
-                a.on("paste.mask", function () {
+                a.on("keyup.arcnetmask", d.behaviour);
+                a.on("paste.arcnetmask", function () {
                     setTimeout(function () {
                         a.keydown().keyup()
                     }, 100)
                 })
             },
             destroyEvents: function () {
-                a.off("keydown.mask keyup.mask paste.mask")
+                a.off("keydown.arcnetmask keyup.arcnetmask paste.arcnetask")
             },
             val: function (c) {
                 var b = a.is(f.zepto ? "input" : ":input");
@@ -143,12 +143,12 @@
         };
         k.init()
     };
-    f.fn.mask = function (a, h) {
+    f.fn.arcnetmask = function (a, h) {
         return this.each(function () {
             f(this).data("mask", new y(this, a, h))
         })
     };
-    f.fn.unmask = function () {
+    f.fn.arcnetunmask = function () {
         return this.each(function () {
             try {
                 f(this).data("mask").remove()
@@ -165,35 +165,40 @@
         "false" === a.attr("data-mask-maxlength") && (h.maxlength = !1);
         a.mask(a.attr("data-mask"), h)
     })
+
+})(window.jQuery || window.Zepto);
+
+
+$(window).bind("load", function() {
     var phonesMasks = ['(00) 00000-0000', '(00) 0000-00009'];
-    $('[data-inputmask="celular"], [data-inputmask="cellphone"]').mask(phonesMasks[1], {onKeyPress:
+    $('[data-inputmask="celular"], [data-inputmask="cellphone"]').arcnetmask(phonesMasks[1], {onKeyPress:
         function(val, e, field, options) {
-            field.mask(val.length > 14 ? phonesMasks[0] : phonesMasks[1], options) ;
+            field.arcnetmask(val.length > 14 ? phonesMasks[0] : phonesMasks[1], options) ;
         }
     });
 
-    $('[data-inputmask^="#"]').mask($('[data-inputmask^="#"]').data("inputmask"));
-    $('[data-inputmask="cnpj"]').mask("00.000.000/0000-00");
-    $('[data-inputmask="cpf"]').mask("000.000.000-00");
-    $('[data-inputmask="telefone"], [data-inputmask="phone"]').mask("(00) 0000-0000");
-    $('[data-inputmask="fax"]').mask("(00) 0000-0000");
-    $('[data-inputmask="ncm"]').mask("00000000");
-    $('[data-inputmask="data"]').mask("00/00/0000");
-    $('[data-inputmask="date"]').mask("0000/00/00");
-    $('[data-inputmask="hora"]').mask("00:00:00");
-    $('[data-inputmask="time"]').mask("00:00:00");
-    $('[data-inputmask="data_hora"]').mask("00/00/0000 00:00:00");
-    $('[data-inputmask="date_time"]').mask("0000/00/00 00:00:00");
-    $('[data-inputmask="cep"]').mask("00000-000");
-    $('[data-inputmask="porcetagem"], [data-inputmask="percent"]').mask('##0,00%', {reverse: true, maxlength: false});
-    $('[data-inputmask="dinheiro"], [data-inputmask="money"]').mask("#.##0,00", {reverse: true, maxlength: false});
+    $('[data-inputmask^="#"]').arcnetmask($('[data-inputmask^="#"]').data("inputmask"));
+    $('[data-inputmask="cnpj"]').arcnetmask("00.000.000/0000-00");
+    $('[data-inputmask="cpf"]').arcnetmask("000.000.000-00");
+    $('[data-inputmask="telefone"], [data-inputmask="phone"]').arcnetmask("(00) 0000-0000");
+    $('[data-inputmask="fax"]').arcnetmask("(00) 0000-0000");
+    $('[data-inputmask="ncm"]').arcnetmask("00000000");
+    $('[data-inputmask="data"]').arcnetmask("00/00/0000");
+    $('[data-inputmask="date"]').arcnetmask("0000/00/00");
+    $('[data-inputmask="hora"]').arcnetmask("00:00:00");
+    $('[data-inputmask="time"]').arcnetmask("00:00:00");
+    $('[data-inputmask="data_hora"]').arcnetmask("00/00/0000 00:00:00");
+    $('[data-inputmask="date_time"]').arcnetmask("0000/00/00 00:00:00");
+    $('[data-inputmask="cep"]').arcnetmask("00000-000");
+    $('[data-inputmask="porcentagem"], [data-inputmask="percent"]').arcnetmask('##0,00%', {reverse: true, maxlength: false});
+    $('[data-inputmask="dinheiro"], [data-inputmask="money"]').arcnetmask("#.##0,00", {reverse: true, maxlength: false});
 
 
-    $('[data-inputmask="numeros"], [data-inputmask="numbers"]').keypress(function(evt){
+    $('[data-inputmask-restrict="numeros"], [data-inputmask-restrict="numbers"]').keypress(function(evt){
         return w.isNumber(evt);
     });
 
-    $('[data-inputmask="letras"], [data-inputmask="letters"]').keypress(function(evt){
+    $('[data-inputmask-restrict="letras"], [data-inputmask-restrict="letters"]').keypress(function(evt){
         evt = (evt) ? evt : event;
         var charCode = (evt.charCode) ? evt.charCode : ((evt.keyCode) ? evt.keyCode :
             ((evt.which) ? evt.which : 0));
@@ -246,7 +251,6 @@
                         } else{
                             var ini = resultado.substring(0, (resultado.length - 2));
                             var end = resultado.substring(resultado.length - 2);
-
                             r = ini +","+ end;
                         }
                         break;
@@ -258,7 +262,7 @@
                 }
                 $(this).val(r);
                 if (resultado.length >= 6)
-                    $(this).mask("#.##0,00", {reverse: true, maxlength: false});
+                    $(this).arcnetmask("#.##0,00", {reverse: true, maxlength: false});
                 return false;
             }
         }
@@ -282,7 +286,7 @@
                 }
         });
 
-    $('[data-inputmask="alfanumerico"], [data-inputmask="alphanumeric"]').keypress(function(evt){
+    $('[data-inputmask-restrict="alfanumerico"], [data-inputmask-restrict="alphanumeric"]').keypress(function(evt){
         e = evt || window.event;
         var bad = /[^\sa-z\d]/i,
             key = String.fromCharCode( e.keyCode || e.which );
@@ -292,10 +296,10 @@
         return true;
     });
 
-    $('[data-inputmask-restrict]').keypress(function(evt){
+    $('[data-inputmask-restrictwords]').keypress(function(evt){
         var returns = true;
         var letter = String.fromCharCode( evt.keyCode || evt.which );
-        var stxPass = $('[data-inputmask-restrict], [data-inputmask-restrict]').data("inputmask-restrict").replace(/\s+/g, '');
+        var stxPass = $('[data-inputmask-restrictwords], [data-inputmask-restrictwords]').data("inputmask-restrictwords").replace(/\s+/g, '');
         var restrictedWords = stxPass.split('');
         $.each(restrictedWords, function(index, data){
             if(letter === data){
@@ -306,6 +310,5 @@
         })
         return returns;
     });
-
-})(window.jQuery || window.Zepto);
+})
 

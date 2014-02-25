@@ -13,7 +13,9 @@
     <script type="text/javascript" src="javascripts/modernizr.js"></script>
     <script type="text/javascript" src="javascripts/jquery-1.10.2.js"></script>
     <script type="text/javascript" src="javascripts/headsmart.min.js"></script>
-    <script type="text/javascript">
+    <script type="text/javascript" src="javascripts/arcnet.simple.mask.min.js"></script>
+
+      <script type="text/javascript">
       $(document).ready(function () {
         $('#main_content').headsmart()
       })
@@ -55,6 +57,22 @@
 <h2>
   <a name="demo" class="anchor" href="#compatibility"><span class="octicon octicon-link"></span></a>Demo</h2>
           <form class="form-horizontal" role="form">
+              <h2>
+                <label style="margin-left: -14px;font-size: 18px;">- Masks</label>
+              </h2><br>
+
+          <div class="form-group">
+              <label class="col-sm-2 control-label">Undefined Type</label>
+              <div class="col-sm-10">
+                  <input type="text" name="field-name" data-inputmask="##-####-###" class="form-control"/>
+                  <div class="highlight highlight-bash">
+                  <pre>
+&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"###-####-###"</span> /&gt;
+                  </pre>
+                  </div>
+              </div>
+          </div>
+
           <div class="form-group">
               <label class="col-sm-2 control-label">Cellphone</label>
               <div class="col-sm-10">
@@ -224,12 +242,64 @@
                   </div>
               </div>
 
+              <h2>
+                  <label style="margin-left: -14px;font-size: 18px;">- Restrictions</label>
+              </h2><br>
 
+              <div class="form-group">
+                  <label class="col-sm-2 control-label">Numbers</label>
+                  <div class="col-sm-10">
+                      <input type="text" data-inputmask-restrict="numbers" class="form-control"/>
+                      <div class="highlight highlight-bash">
+                      <pre>
+&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask-restrict<span class="o">=</span><span class="s2">"numbers"</span>/&gt;
+&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask-restrict<span class="o">=</span><span class="s2">"numeros"</span>/&gt;
+<small>Receives only numbers.</small>
+                      </pre>
+                      </div>
+                  </div>
+              </div>
 
+              <div class="form-group">
+                  <label class="col-sm-2 control-label">Letters</label>
+                  <div class="col-sm-10">
+                      <input type="text" data-inputmask-restrict="letters" class="form-control"/>
+                      <div class="highlight highlight-bash">
+                      <pre>
+&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask-restrict<span class="o">=</span><span class="s2">"letters"</span>/&gt;
+&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask-restrict<span class="o">=</span><span class="s2">"letras"</span>/&gt;
+<small>Receives only letters.</small>
+                      </pre>
+                      </div>
+                  </div>
+              </div>
 
+              <div class="form-group">
+                  <label class="col-sm-2 control-label">Alphanumeric</label>
+                  <div class="col-sm-10">
+                      <input type="text" data-inputmask-restrict="alphanumeric" class="form-control"/>
+                      <div class="highlight highlight-bash">
+                      <pre>
+&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask-restrict<span class="o">=</span><span class="s2">"alphanumeric"</span>/&gt;
+&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask-restrict<span class="o">=</span><span class="s2">"alfanumerico"</span>/&gt;
+<small>Receives only alphanumeric.</small>
+                      </pre>
+                      </div>
+                  </div>
+              </div>
 
-
-
+              <div class="form-group">
+                  <label class="col-sm-2 control-label">Defined Words</label>
+                  <div class="col-sm-10">
+                      <input type="text" data-inputmask-restrictwords="qwerty" class="form-control"/>
+                      <div class="highlight highlight-bash">
+                      <pre>
+&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask-restrictwords<span class="o">=</span><span class="s2">"qwerty"</span>/&gt;
+<small>Restricts the words in the parameter.</small>
+                      </pre>
+                      </div>
+                  </div>
+              </div>
 
         </form>
 <h2>
@@ -244,88 +314,38 @@
 <li>Safari 3.2+ (Win, Mac, iPhone);</li>
 <li>Opera 8+ (Win, Mac, Linux, Android, iPhone).</li>
 </ul><h2>
-<a name="basic-usage-examples" class="anchor" href="#basic-usage-examples"><span class="octicon octicon-link"></span></a>Basic Usage Examples</h2>
+<a name="basic-usage-examples" class="anchor" href="#basic-usage-examples"><span class="octicon octicon-link"></span></a>Basic Javascript Usage Examples</h2>
 
+        <h3>
+            <label style="font-size: 18px;">- Inserting</label>
+        </h3>
 <div class="highlight highlight-bash"><pre><span class="k">$(</span>document<span class="k">)</span>.ready<span class="o">(</span><span class="k">function</span><span class="o">(){</span>
-  <span class="k">$(</span><span class="s1">'element'</span><span class="k">)</span>.mask<span class="o">(</span><span class="s1">'11/11/1111'</span><span class="o">)</span><span class="p">;</span> //Date
-  <span class="k">$(</span><span class="s1">'element'</span><span class="k">)</span>.mask<span class="o">(</span><span class="s1">'00:00:00'</span><span class="o">)</span><span class="p">;</span> //Time
-  <span class="k">$(</span><span class="s1">'element'</span><span class="k">)</span>.mask<span class="o">(</span><span class="s1">'00/00/0000 00:00:00'</span><span class="o">)</span><span class="p">;</span> //Date_Time
-  <span class="k">$(</span><span class="s1">'element'</span><span class="k">)</span>.mask<span class="o">(</span><span class="s1">'00000-000'</span><span class="o">)</span><span class="p">;</span> //Cep
-  <span class="k">$(</span><span class="s1">'element'</span><span class="k">)</span>.mask<span class="o">(</span><span class="s1">'0000-0000'</span><span class="o">)</span><span class="p">;</span> //Phone
-  <span class="k">$(</span><span class="s1">'element'</span><span class="k">)</span>.mask<span class="o">(</span><span class="s1">'(00) 0000-0000'</span><span class="o">)</span><span class="p">;</span> //Phone_DDD
-  <span class="k">$(</span><span class="s1">'element'</span><span class="k">)</span>.mask<span class="o">(</span><span class="s1">'AAA 000-S0S'</span><span class="o">)</span><span class="p">;</span>
-  <span class="k">$(</span><span class="s1">'element'</span><span class="k">)</span>.mask<span class="o">(</span><span class="s1">'000.000.000-00'</span>, <span class="o">{</span>reverse: <span class="nb">true</span><span class="o">})</span><span class="p">;</span> //Cpf
-  <span class="k">$(</span><span class="s1">'element'</span><span class="k">)</span>.mask<span class="o">(</span><span class="s1">'000.000.000.000.000,00'</span>, <span class="o">{</span>reverse: <span class="nb">true</span><span class="o">})</span><span class="p">;</span> //Money
-  <span class="k">$(</span><span class="s1">'element'</span><span class="k">)</span>.mask<span class="o">(</span><span class="s2">"#.##0,00"</span>, <span class="o">{</span>reverse: <span class="nb">true</span>, maxlength: <span class="nb">false</span><span class="o">})</span><span class="p">;</span> //Money
-  <span class="k">$(</span><span class="s1">'element'</span><span class="k">)</span>.mask<span class="o">(</span><span class="s1">'##0,00%'</span>, <span class="o">{</span>reverse: <span class="nb">true</span><span class="o">})</span><span class="p">;</span> //Percent
+  <span class="k">$(</span><span class="s1">'element'</span><span class="k">)</span>.arcnetmask<span class="o">(</span><span class="s1">'11/11/1111'</span><span class="o">)</span><span class="p">;</span> //Date
+  <span class="k">$(</span><span class="s1">'element'</span><span class="k">)</span>.arcnetmask<span class="o">(</span><span class="s1">'00:00:00'</span><span class="o">)</span><span class="p">;</span> //Time
+  <span class="k">$(</span><span class="s1">'element'</span><span class="k">)</span>.arcnetmask<span class="o">(</span><span class="s1">'00/00/0000 00:00:00'</span><span class="o">)</span><span class="p">;</span> //Date_Time
+  <span class="k">$(</span><span class="s1">'element'</span><span class="k">)</span>.arcnetmask<span class="o">(</span><span class="s1">'00000-000'</span><span class="o">)</span><span class="p">;</span> //Cep
+  <span class="k">$(</span><span class="s1">'element'</span><span class="k">)</span>.arcnetmask<span class="o">(</span><span class="s1">'0000-0000'</span><span class="o">)</span><span class="p">;</span> //Phone
+  <span class="k">$(</span><span class="s1">'element'</span><span class="k">)</span>.arcnetmask<span class="o">(</span><span class="s1">'(00) 0000-0000'</span><span class="o">)</span><span class="p">;</span> //Phone_DDD
+  <span class="k">$(</span><span class="s1">'element'</span><span class="k">)</span>.arcnetmask<span class="o">(</span><span class="s1">'AAA 000-S0S'</span><span class="o">)</span><span class="p">;</span>
+  <span class="k">$(</span><span class="s1">'element'</span><span class="k">)</span>.arcnetmask<span class="o">(</span><span class="s1">'000.000.000-00'</span>, <span class="o">{</span>reverse: <span class="nb">true</span><span class="o">})</span><span class="p">;</span> //Cpf
+  <span class="k">$(</span><span class="s1">'element'</span><span class="k">)</span>.arcnetmask<span class="o">(</span><span class="s1">'000.000.000.000.000,00'</span>, <span class="o">{</span>reverse: <span class="nb">true</span><span class="o">})</span><span class="p">;</span> //Money
+  <span class="k">$(</span><span class="s1">'element'</span><span class="k">)</span>.arcnetmask<span class="o">(</span><span class="s2">"#.##0,00"</span>, <span class="o">{</span>reverse: <span class="nb">true</span>, maxlength: <span class="nb">false</span><span class="o">})</span><span class="p">;</span> //Money
+  <span class="k">$(</span><span class="s1">'element'</span><span class="k">)</span>.arcnetmask<span class="o">(</span><span class="s1">'##0,00%'</span>, <span class="o">{</span>reverse: <span class="nb">true</span><span class="o">})</span><span class="p">;</span> //Percent
+<span class="o">}</span>
 </pre></div>
 
+        <h3>
+            <label style="font-size: 18px;">- Removing</label>
+        </h3>
+
+<div class="highlight highlight-bash"><pre><span class="k">$(</span>document<span class="k">)</span>.ready<span class="o">(</span><span class="k">function</span><span class="o">(){</span>
+  <span class="k">$(</span><span class="s1">'element'</span><span class="k">)</span>.arcnetunmask<span class="o">(</span><span class="o">)</span><span class="p">;</span>
+<span class="o">}</span>
+</pre></div>
 <h3>
 <a name="reverse-attribute" class="anchor" href="#reverse-attribute"><span class="octicon octicon-link"></span></a>Reverse Attribute</h3>
 
 <p>With this attribute the mask will be placed from the right to the left (that's why reverse:true is defined).</p>
-
-<h2>
-<a name="mask-using-data-mask-attribute" class="anchor" href="#mask-using-data-mask-attribute"><span class="octicon octicon-link"></span></a>Mask using data-mask attribute</h2>
-
-<p>To get your mask applied with the data-mask attribute just use it as the same way you use with the $.mask function. </p>
-
-<p>You can put on your own:</p>
-
-<div class="highlight highlight-bash"><pre>  &lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"#####-###"</span>/&gt;
-</pre></div>
-
-<p>Or use some defined types:</p>
-
-<div class="highlight highlight-bash"><pre>&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> <span class="nv">name</span><span class="o">=</span><span class="s2">"field-name"</span> data-inputmask<span class="o">=</span><span class="s2">"celular"</span> /&gt;
-&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> <span class="nv">name</span><span class="o">=</span><span class="s2">"field-name"</span> data-inputmask<span class="o">=</span><span class="s2">"cellphone"</span> /&gt;
-
-&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"cnpj"</span>/&gt;
-
-&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"cpf"</span>/&gt;
-
-&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"telefone"</span>/&gt;
-&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"phone"</span>/&gt;
-
-&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"fax"</span>/&gt;
-
-&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"ncm"</span>/&gt;
-
-&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"dinheiro"</span>/&gt; //this mask is not real <span class="nb">time </span>typing
-&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"money"</span>/&gt;
-
-&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"dinheiro3"</span>/&gt; //this mask is real <span class="nb">time </span>typing :<span class="o">)</span>
-&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"money3"</span>/&gt;
-
-&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"data"</span>/&gt;
-&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"date"</span>/&gt;
-
-&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"hora"</span>/&gt;
-&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"time"</span>/&gt;
-
-&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"data_hora"</span>/&gt;
-&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"date_time"</span>/&gt;
-
-&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"cep"</span>/&gt;
-
-&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"porcentagem"</span>/&gt;
-&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"percent"</span>/&gt;
-</pre></div>
-
-<p>You also can restrict some letters and types.</p>
-
-<div class="highlight highlight-bash"><pre>&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"numeros"</span>/&gt; //Receives only numbers.
-&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"numbers"</span>/&gt;
-
-&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"letras"</span>/&gt; //Receives only letters.
-&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"letters"</span>/&gt;
-
-&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"alfanumerico"</span>/&gt; //Receives only alphanumeric.
-&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"alphanumeric"</span>/&gt;
-
-&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask-restrict<span class="o">=</span><span class="s2">"qwerty"</span>/&gt; //Restricts the letters in the parameter
-&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask-restrict<span class="o">=</span><span class="s2">"asdfg"</span>/&gt;
-</pre></div>
       </section>
 
       <footer>
@@ -352,6 +372,5 @@
             pageTracker._trackPageview();
             } catch(err) {}
           </script>
-    <script type="text/javascript" src="javascripts/arcnet.simple.mask.min.js"></script>
   </body>
 </html>
