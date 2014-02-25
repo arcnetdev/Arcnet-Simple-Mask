@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4da10d75-f25a-41fb-b9ed-843b4bdcd969" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javascripts/arcnet.simple.mask.js" afterPath="$PROJECT_DIR$/javascripts/arcnet.simple.mask.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javascripts/arcnet.simple.mask.min.js" afterPath="$PROJECT_DIR$/javascripts/arcnet.simple.mask.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stylesheets/bootstrap-theme.css" afterPath="$PROJECT_DIR$/stylesheets/bootstrap-theme.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
     </list>
     <ignored path="Arcnet-Simple-Mask.iws" />
@@ -27,7 +24,22 @@
     <favorites_list name="Arcnet-Simple-Mask" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="359" column="75" selection-start="20439" selection-end="20439" vertical-scroll-proportion="0.5214198" vertical-offset="5677" max-vertical-offset="6511">
+              <folding>
+                <element signature="n#style#0;n#label#0;n#h2#0;n#form#0;n#section#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#0;n#h2#1;n#form#0;n#section#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#0;n#h3#0;n#section#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#0;n#h3#1;n#section#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -166,7 +178,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="960" y="0" width="960" height="1040" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -236,7 +248,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="77" selection-start="820" selection-end="820" vertical-scroll-proportion="0.31211752" vertical-offset="0" max-vertical-offset="6494">
+        <state line="359" column="75" selection-start="20439" selection-end="20439" vertical-scroll-proportion="0.5214198" vertical-offset="5677" max-vertical-offset="6511">
           <folding>
             <element signature="n#style#0;n#label#0;n#h2#0;n#form#0;n#section#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#label#0;n#h2#1;n#form#0;n#section#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
