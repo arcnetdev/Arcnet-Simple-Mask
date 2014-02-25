@@ -41,7 +41,7 @@ $(document).ready(function(){
 With this attribute the mask will be placed from the right to the left (that's why reverse:true is defined).
 
 ##Mask using data-mask attribute
-To get your mask applied with the data-mask attribute just use it as the same way you use with the $.mask function. 
+To get your mask applied with the data-mask attribute just use it as the same way you use with the $.arcnetmask function. 
 
 You can put on your own:
 ```bash
