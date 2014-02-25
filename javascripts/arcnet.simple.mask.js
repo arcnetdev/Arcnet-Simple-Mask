@@ -166,149 +166,149 @@
         a.mask(a.attr("data-mask"), h)
     })
 
-})(window.jQuery || window.Zepto);
 
-
-$(window).bind("load", function() {
-    var phonesMasks = ['(00) 00000-0000', '(00) 0000-00009'];
-    $('[data-inputmask="celular"], [data-inputmask="cellphone"]').arcnetmask(phonesMasks[1], {onKeyPress:
-        function(val, e, field, options) {
-            field.arcnetmask(val.length > 14 ? phonesMasks[0] : phonesMasks[1], options) ;
-        }
-    });
-
-    $('[data-inputmask^="#"]').arcnetmask($('[data-inputmask^="#"]').data("inputmask"));
-    $('[data-inputmask="cnpj"]').arcnetmask("00.000.000/0000-00");
-    $('[data-inputmask="cpf"]').arcnetmask("000.000.000-00");
-    $('[data-inputmask="telefone"], [data-inputmask="phone"]').arcnetmask("(00) 0000-0000");
-    $('[data-inputmask="fax"]').arcnetmask("(00) 0000-0000");
-    $('[data-inputmask="ncm"]').arcnetmask("00000000");
-    $('[data-inputmask="data"]').arcnetmask("00/00/0000");
-    $('[data-inputmask="date"]').arcnetmask("0000/00/00");
-    $('[data-inputmask="hora"]').arcnetmask("00:00:00");
-    $('[data-inputmask="time"]').arcnetmask("00:00:00");
-    $('[data-inputmask="data_hora"]').arcnetmask("00/00/0000 00:00:00");
-    $('[data-inputmask="date_time"]').arcnetmask("0000/00/00 00:00:00");
-    $('[data-inputmask="cep"]').arcnetmask("00000-000");
-    $('[data-inputmask="porcentagem"], [data-inputmask="percent"]').arcnetmask('##0,00%', {reverse: true, maxlength: false});
-    $('[data-inputmask="dinheiro"], [data-inputmask="money"]').arcnetmask("#.##0,00", {reverse: true, maxlength: false});
-
-
-    $('[data-inputmask-restrict="numeros"], [data-inputmask-restrict="numbers"]').keypress(function(evt){
-        return w.isNumber(evt);
-    });
-
-    $('[data-inputmask-restrict="letras"], [data-inputmask-restrict="letters"]').keypress(function(evt){
-        evt = (evt) ? evt : event;
-        var charCode = (evt.charCode) ? evt.charCode : ((evt.keyCode) ? evt.keyCode :
-            ((evt.which) ? evt.which : 0));
-        if (charCode > 31 && (charCode < 65 || charCode > 90) &&
-            (charCode < 97 || charCode > 122)) {
-            return false;
-        }
-        return true;
-    });
-
-    $('[data-inputmask="money3"], [data-inputmask="dinheiro3"]').val('0,00');
-    $('[data-inputmask="money3"], [data-inputmask="dinheiro3"]').keypress(function(evento){
-        if(!w.isNumber(evento))
-            return false;
-
-        var posto = false;
-        var keyCode = (evento.keyCode ? evento.keyCode : evento.which ? evento.which : evento.charCode);
-        var letter = String.fromCharCode( evento.keyCode || evento.which );
-        if(document.getSelection().toString() != '')
-            $(this).val('0,00');
-
-        if (letter.length < 10 || keyCode == 8 || keyCode == 46 || keyCode == 9) {
-            if ((keyCode >= 48 && keyCode <= 57) || (keyCode >= 96 && keyCode <= 105) || keyCode == 8 || keyCode == 46) {
-                var resultado;
-                resultado = $(this).val() + letter;
-                resultado = resultado.replace(",", "").replace(".", "");
-
-                while (resultado.substring(0, 1) == "0") {
-                    resultado = resultado.substring(1, resultado.length);
-                }
-
-                var r;
-                switch(resultado.length){
-                    case 0:
-                        var end = resultado;
-                        r = (posto) ? "0,000" : "0,00";
-                        break;
-                    case 1:
-                        var end = resultado;
-                        r = (posto) ? ("0,00" + end) : ("0,0" + end);
-                        break;
-                    case 2:
-                        var end = resultado;
-                        r = (posto) ? ("0,0" + end) : ("0," + end);
-                        break;
-                    case 3:
-                        if(posto){
-                            var end = resultado;
-                            r = "0," + end;
-                        } else{
-                            var ini = resultado.substring(0, (resultado.length - 2));
-                            var end = resultado.substring(resultado.length - 2);
-                            r = ini +","+ end;
-                        }
-                        break;
-                    default:
-                        var ini = resultado.substring(0, (resultado.length - ((posto) ? 3 : 2)));
-                        var end = resultado.substring(resultado.length - ((posto) ? 3 : 2));
-                        r = ini +","+ end;
-                        break;
-                }
-                $(this).val(r);
-                if (resultado.length >= 6)
-                    $(this).arcnetmask("#.##0,00", {reverse: true, maxlength: false});
-                return false;
+    $(window).bind("load", function() {
+        var phonesMasks = ['(00) 00000-0000', '(00) 0000-00009'];
+        $('[data-inputmask="celular"], [data-inputmask="cellphone"]').arcnetmask(phonesMasks[1], {onKeyPress:
+            function(val, e, field, options) {
+                field.arcnetmask(val.length > 14 ? phonesMasks[0] : phonesMasks[1], options) ;
             }
-        }
-    }).keydown(function(evento){
-            var keyCode = (evento.keyCode ? evento.keyCode : evento.which ? evento.which : evento.charCode);
-            var val = "";
-            size = $(this).val().replace(",", "").replace(".", "").length
-            number = $(this).val().replace(",", "").replace(".", "").substring(0, size - 1)
-            if(size <= 3)
-                if (keyCode === 8){
-                    switch  (size - 1){
-                        case 3:
-                            val = "0,0" + number
-                            break;
-                        case 2:
-                            val = "0," + number
-                            break;
-                    }
-                    $(this).val(val);
-                    return false;
-                }
         });
 
-    $('[data-inputmask-restrict="alfanumerico"], [data-inputmask-restrict="alphanumeric"]').keypress(function(evt){
-        e = evt || window.event;
-        var bad = /[^\sa-z\d]/i,
-            key = String.fromCharCode( e.keyCode || e.which );
-        if ( e.which !== 0 && e.charCode !== 0 && bad.test(key) ) {
-            return false;
-        }
-        return true;
-    });
+        $('[data-inputmask^="#"]').arcnetmask($('[data-inputmask^="#"]').data("inputmask"));
+        $('[data-inputmask="cnpj"]').arcnetmask("00.000.000/0000-00");
+        $('[data-inputmask="cpf"]').arcnetmask("000.000.000-00");
+        $('[data-inputmask="telefone"], [data-inputmask="phone"]').arcnetmask("(00) 0000-0000");
+        $('[data-inputmask="fax"]').arcnetmask("(00) 0000-0000");
+        $('[data-inputmask="ncm"]').arcnetmask("00000000");
+        $('[data-inputmask="data"]').arcnetmask("00/00/0000");
+        $('[data-inputmask="date"]').arcnetmask("0000/00/00");
+        $('[data-inputmask="hora"]').arcnetmask("00:00:00");
+        $('[data-inputmask="time"]').arcnetmask("00:00:00");
+        $('[data-inputmask="data_hora"]').arcnetmask("00/00/0000 00:00:00");
+        $('[data-inputmask="date_time"]').arcnetmask("0000/00/00 00:00:00");
+        $('[data-inputmask="cep"]').arcnetmask("00000-000");
+        $('[data-inputmask="porcentagem"], [data-inputmask="percent"]').arcnetmask('##0,00%', {reverse: true, maxlength: false});
+        $('[data-inputmask="dinheiro"], [data-inputmask="money"]').arcnetmask("#.##0,00", {reverse: true, maxlength: false});
 
-    $('[data-inputmask-restrictwords]').keypress(function(evt){
-        var returns = true;
-        var letter = String.fromCharCode( evt.keyCode || evt.which );
-        var stxPass = $('[data-inputmask-restrictwords], [data-inputmask-restrictwords]').data("inputmask-restrictwords").replace(/\s+/g, '');
-        var restrictedWords = stxPass.split('');
-        $.each(restrictedWords, function(index, data){
-            if(letter === data){
-                returns = false;
+
+        $('[data-inputmask-restrict="numeros"], [data-inputmask-restrict="numbers"]').keypress(function(evt){
+            return w.isNumber(evt);
+        });
+
+        $('[data-inputmask-restrict="letras"], [data-inputmask-restrict="letters"]').keypress(function(evt){
+            evt = (evt) ? evt : event;
+            var charCode = (evt.charCode) ? evt.charCode : ((evt.keyCode) ? evt.keyCode :
+                ((evt.which) ? evt.which : 0));
+            if (charCode > 31 && (charCode < 65 || charCode > 90) &&
+                (charCode < 97 || charCode > 122)) {
                 return false;
             }
             return true;
-        })
-        return returns;
-    });
-})
+        });
+
+        $('[data-inputmask="money3"], [data-inputmask="dinheiro3"]').val('0,00');
+        $('[data-inputmask="money3"], [data-inputmask="dinheiro3"]').keypress(function(evento){
+            if(!w.isNumber(evento))
+                return false;
+
+            var posto = false;
+            var keyCode = (evento.keyCode ? evento.keyCode : evento.which ? evento.which : evento.charCode);
+            var letter = String.fromCharCode( evento.keyCode || evento.which );
+            if(document.getSelection().toString() != '')
+                $(this).val('0,00');
+
+            if (letter.length < 10 || keyCode == 8 || keyCode == 46 || keyCode == 9) {
+                if ((keyCode >= 48 && keyCode <= 57) || (keyCode >= 96 && keyCode <= 105) || keyCode == 8 || keyCode == 46) {
+                    var resultado;
+                    resultado = $(this).val() + letter;
+                    resultado = resultado.replace(",", "").replace(".", "");
+
+                    while (resultado.substring(0, 1) == "0") {
+                        resultado = resultado.substring(1, resultado.length);
+                    }
+
+                    var r;
+                    switch(resultado.length){
+                        case 0:
+                            var end = resultado;
+                            r = (posto) ? "0,000" : "0,00";
+                            break;
+                        case 1:
+                            var end = resultado;
+                            r = (posto) ? ("0,00" + end) : ("0,0" + end);
+                            break;
+                        case 2:
+                            var end = resultado;
+                            r = (posto) ? ("0,0" + end) : ("0," + end);
+                            break;
+                        case 3:
+                            if(posto){
+                                var end = resultado;
+                                r = "0," + end;
+                            } else{
+                                var ini = resultado.substring(0, (resultado.length - 2));
+                                var end = resultado.substring(resultado.length - 2);
+                                r = ini +","+ end;
+                            }
+                            break;
+                        default:
+                            var ini = resultado.substring(0, (resultado.length - ((posto) ? 3 : 2)));
+                            var end = resultado.substring(resultado.length - ((posto) ? 3 : 2));
+                            r = ini +","+ end;
+                            break;
+                    }
+                    $(this).val(r);
+                    if (resultado.length >= 6)
+                        $(this).arcnetmask("#.##0,00", {reverse: true, maxlength: false});
+                    return false;
+                }
+            }
+        }).keydown(function(evento){
+                var keyCode = (evento.keyCode ? evento.keyCode : evento.which ? evento.which : evento.charCode);
+                var val = "";
+                size = $(this).val().replace(",", "").replace(".", "").length
+                number = $(this).val().replace(",", "").replace(".", "").substring(0, size - 1)
+                if(size <= 3)
+                    if (keyCode === 8){
+                        switch  (size - 1){
+                            case 3:
+                                val = "0,0" + number
+                                break;
+                            case 2:
+                                val = "0," + number
+                                break;
+                        }
+                        $(this).val(val);
+                        return false;
+                    }
+            });
+
+        $('[data-inputmask-restrict="alfanumerico"], [data-inputmask-restrict="alphanumeric"]').keypress(function(evt){
+            e = evt || window.event;
+            var bad = /[^\sa-z\d]/i,
+                key = String.fromCharCode( e.keyCode || e.which );
+            if ( e.which !== 0 && e.charCode !== 0 && bad.test(key) ) {
+                return false;
+            }
+            return true;
+        });
+
+        $('[data-inputmask-restrictwords]').keypress(function(evt){
+            var returns = true;
+            var letter = String.fromCharCode( evt.keyCode || evt.which );
+            var stxPass = $('[data-inputmask-restrictwords], [data-inputmask-restrictwords]').data("inputmask-restrictwords").replace(/\s+/g, '');
+            var restrictedWords = stxPass.split('');
+            $.each(restrictedWords, function(index, data){
+                if(letter === data){
+                    returns = false;
+                    return false;
+                }
+                return true;
+            })
+            return returns;
+        });
+    })
+})(window.jQuery || window.Zepto);
+
 
