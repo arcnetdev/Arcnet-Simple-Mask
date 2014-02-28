@@ -46,7 +46,7 @@ $(document).ready(function(){
   $('element').arcnetmask("date");
   $('element').arcnetmask("hora");
   $('element').arcnetmask("time");
-  $('element"]').arcnetmask("date_time");
+  $('element"]').arcnetmask("data_hora");
   $('element').arcnetmask("date_time");
   $('element').arcnetmask("cep");
   $('element').arcnetmask("percent");
