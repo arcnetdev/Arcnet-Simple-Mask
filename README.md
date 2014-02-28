@@ -33,6 +33,31 @@ $(document).ready(function(){
 }
 ```
 
+####Defined arcnetmask types
+```bash
+$(document).ready(function(){
+  $('element').arcnetmask("cnpj");
+  $('element').arcnetmask("cpf");
+  $('element').arcnetmask("telefone");
+  $('element').arcnetmask("phone");
+  $('element').arcnetmask("fax");
+  $('element').arcnetmask("ncm");
+  $('element').arcnetmask("data");
+  $('element').arcnetmask("date");
+  $('element').arcnetmask("hora");
+  $('element').arcnetmask("time");
+  $('element"]').arcnetmask("date_time");
+  $('element').arcnetmask("date_time");
+  $('element').arcnetmask("cep");
+  $('element').arcnetmask("percent");
+  $('element').arcnetmask("porcentagem");
+  $('element').arcnetmask("money");
+  $('element').arcnetmask("dinheiro");
+  $('element').arcnetmask("money3");
+  $('element').arcnetmask("dinheiro3");
+}
+```
+
 ###Removing
 ```bash
 $(document).ready(function(){
@@ -102,6 +127,20 @@ You also can restrict some letters and types.
 <input type="text" data-inputmask-restrictwords="qwerty"/> //Restricts the letters in the parameter
 <input type="text" data-inputmask-restrictwords="asdfg"/>
 ```
+
+```bash
+$(document).ready(function(){
+  $('element').arcnetunmaskrestricts('numbers');
+  $('element').arcnetunmaskrestricts('numeros');
+  $('element').arcnetunmaskrestricts('letters');
+  $('element').arcnetunmaskrestricts('letras');
+  $('element').arcnetunmaskrestricts('alphanumeric')
+  $('element').arcnetunmaskrestricts('alfanumerico');
+  $('element').arcnetunmaskrestricts("restrictWords", "words");
+}
+```
+
+
 
 #License
 Created by Weslley Neri on 2014-02-20 - https://github.com/weslley39
