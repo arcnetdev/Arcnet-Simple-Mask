@@ -404,7 +404,7 @@
             } catch (a) {}
         })
     };
-    f.fn.arcnetunmaskrestricts  = function (a, h) {
+    f.fn.arcnetmaskrestricts  = function (a, h) {
         return this.each(function () {
             switch (a){
                 case 'numbers':
@@ -453,15 +453,15 @@
         $('[data-inputmask="money3"], [data-inputmask="dinheiro3"]').arcnetmask("dinheiro3");
 
 
-        $('[data-inputmask-restrict="numeros"], [data-inputmask-restrict="numbers"]').arcnetunmaskrestricts('numbers');
+        $('[data-inputmask-restrict="numeros"], [data-inputmask-restrict="numbers"]').arcnetmaskrestricts('numbers');
 
-        $('[data-inputmask-restrict="letras"], [data-inputmask-restrict="letters"]').arcnetunmaskrestricts('letters');
+        $('[data-inputmask-restrict="letras"], [data-inputmask-restrict="letters"]').arcnetmaskrestricts('letters');
 
-        $('[data-inputmask-restrict="alfanumerico"], [data-inputmask-restrict="alphanumeric"]').arcnetunmaskrestricts('alphanumeric')
+        $('[data-inputmask-restrict="alfanumerico"], [data-inputmask-restrict="alphanumeric"]').arcnetmaskrestricts('alphanumeric')
 
         var stxPass = $('[data-inputmask-restrictwords], [data-inputmask-restrictwords]').data("inputmask-restrictwords").replace(/\s+/g, '');
         stxPass = stxPass.substring(14, stxPass.length);
-        $('[data-inputmask-restrictwords]').arcnetunmaskrestricts("restrictWords", stxPass);
+        $('[data-inputmask-restrictwords]').arcnetmaskrestricts("restrictWords", stxPass);
     });
 
 })(window.jQuery || window.Zepto);
