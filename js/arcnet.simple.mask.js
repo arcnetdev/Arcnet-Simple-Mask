@@ -381,7 +381,7 @@
                     definedMaskFunctions.money(this);
                     break;
                 case 'money3':
-                    definedMaskFunctions.money(this);
+                    definedMaskFunctions.money3(this);
                     break;
                 case 'dinheiro3':
                     definedMaskFunctions.money3(this);
