@@ -3,52 +3,80 @@
 <head>
     <title>Javascript Tests</title>
     <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
-<<<<<<< HEAD
-    <script type="text/javascript" src="../js/arcnet.simple.format.js"></script>
-=======
     <script type="text/javascript" src="../js/arcnet.simple.mask.js"></script>
->>>>>>> js and js min can be load in <head>
 </head>
 <body>
 
-<label>To Upper</label><br>
-<input type="text" data-format="toupper" /><br>
-<input type="text" data-format-realtime="toupper" /><br>
+<label>Undefined Type</label><br>
+<input type="text" data-inputmask="###-####-###" /><br>
 <br>
-
-<label>To Lower</label><br>
-<input type="text" data-format="tolower" /><br>
-<input type="text" data-format-realtime="tolower" /><br>
+<label>Cellphone</label><br>
+<input type="text" data-inputmask="celular" /><br>
+<input type="text" data-inputmask="cellphone" /><br>
 <br>
-
-<label>To First Upper</label><br>
-<input type="text" data-format="firstupper" /><br>
-<input type="text" data-format-realtime="firstupper" /><br>
-<br>
-
-<label>All Firsts Upper</label><br>
-<input type="text" data-format="allfirstsupper" /><br>
-<br>
-
 <label>Cnpj</label><br>
-<input type="text" data-format="cnpj" /><br>
+<input type="text" data-inputmask="cnpj"/><br>
 <br>
-
-<<<<<<< HEAD
-<label>Cnpj Strip</label><br>
-<input type="text" data-format="cnpjstripe" /><br>
-<br>
-
 <label>Cpf</label><br>
-<input type="text" data-format="cpf" /><br>
+<input type="text" data-inputmask="cpf"/><br>
 <br>
+<label>Telephone</label><br>
+<input type="text" data-inputmask="phone"/><br>
+<input type="text" data-inputmask="telefone"/><br>
+<br>
+<label>Fax</label><br>
+<input type="text" data-inputmask="fax"/><br>
+<br>
+<label>Ncm</label><br>
+<input type="text" data-inputmask="ncm"/><br>
+<br>
+<label>Money</label><br>
+<input type="text" data-inputmask="dinheiro"/><br>
+<input type="text" data-inputmask="money"/><br>
+<br>
+<label>Money2</label><br>
+<input type="text" data-inputmask="dinheiro3"/><br>
+<input type="text" data-inputmask="money3"/><br>
+<br>
+<label>Date</label><br>
+<input type="text" data-inputmask="date"/><br>
+<input type="text" data-inputmask="data"/><br>
+<br>
+<label>Time</label><br>
+<input type="text" data-inputmask="time"/><br>
+<input type="text" data-inputmask="hora"/><br>
+<br>
+<label>Date/Time</label><br>
+<input type="text" data-inputmask="date_time"/><br>
+<input type="text" data-inputmask="data_hora"/><br>
+<br>
+<label>Cep</label><br>
+<input type="text" data-inputmask="cep"/><br>
+<br>
+<label>Percent</label><br>
+<input type="text" data-inputmask="percent"/><br>
+<input type="text" data-inputmask="porcentagem"/><br>
+<br>
+<label>Teste</label><br>
+<input type="text" id="juca"/><br>
 
-<label>Cpf Strip</label><br>
-<input type="text" data-format="cpfstripe" /><br>
-<br>
-=======
-<label>Restringe Palavras</label><br>
-<input type="text" data-inputmask-restrict="jose"/><br>
->>>>>>> js and js min can be load in <head>
+
+<h3>Restricts</h3>
+<label>Numbers</label><br>
+<input type="text" data-inputmask-restrict="numbers"/><br>
+<input type="text" data-inputmask-restrict="numeros"/><br>
+
+<label>Letters</label><br>
+<input type="text" data-inputmask-restrict="letters"/><br>
+<input type="text" data-inputmask-restrict="letras"/><br>
+
+<label>Alphanumeric</label><br>
+<input type="text" data-inputmask-restrict="alphanumeric"/><br>
+<input type="text" data-inputmask-restrict="alfanumerico"/><br>
+
+<label>Words</label><br>
+<input type="text" data-inputmask-restrictwords="restrictWords, qwerty"/><br>
+<input type="text" data-inputmask-restrictwords="alfanumerico"/><br>
+
 </body>
 </html>
