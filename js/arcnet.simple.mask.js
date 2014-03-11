@@ -144,8 +144,13 @@
             return true;
         },
 
-        money3 : function (element) {
-            $(element).val().length === 0 ? $(element).val("0.00") : $(element).val();
+        money3 : function (element, isPercent) {
+            var percent = "";
+            if(isPercent){
+                percent = "%";
+            }
+
+            $(element).val().length === 0 ? $(element).val("0.00" + percent) : $(element).val();
             $(element).keypress(function(evento){
             if (!definedMaskFunctions.isNumber(evento))
                 return false;
@@ -158,8 +163,8 @@
 
             if (letter.length < 10 || keyCode == 8 || keyCode == 46 || keyCode == 9) {
                 if ((keyCode >= 48 && keyCode <= 57) || (keyCode >= 96 && keyCode <= 105) || keyCode == 8 || keyCode == 46) {
-                    var resultado;
-                    resultado = $(this).val() + letter;
+                    var input = $(this).val();
+                    var resultado = isPercent ? input.substring(0, input.length - 1) + letter : input + letter;
                     resultado = resultado.replace(",", "").replace(".", "");
 
                     while (resultado.substring(0, 1) == "0") {
@@ -196,17 +201,23 @@
                             r = ini + "," + end;
                             break;
                     }
-                    $(this).val(r);
+                    $(this).val(r + percent);
                     if (resultado.length >= 6)
-                        $(this).arcnetmask("#.##0,00", {reverse: true, maxlength: false});
+                        $(this).arcnetmask("#.##0,00" + percent, {reverse: true, maxlength: false});
                     return false;
                 }
             }
             }).keydown(function(evento){
                 var keyCode = (evento.keyCode ? evento.keyCode : evento.which ? evento.which : evento.charCode);
                 var val = "";
-                size = $(this).val().replace(",", "").replace(".", "").length
+                size = $(this).val().replace(",", "").replace(".", "").replace("%", "").length
                 number = $(this).val().replace(",", "").replace(".", "").substring(0, size - 1)
+
+                if(isPercent && keyCode === 8 && size > 3){
+                    var input = $(this).val();
+                    $(this).val(input.substring(0, input.length - 2) + percent);
+                    return false;
+                }
                 if(size <= 3){
                     if (keyCode === 8){
                         switch  (size - 1){
@@ -217,7 +228,7 @@
                                 val = "0," + number
                                 break;
                         }
-                        $(this).val(val);
+                        $(this).val(val + percent);
                         return false;
                     }
                 }
@@ -268,7 +279,7 @@
         },
 
         percent: function(element){
-            $(element).arcnetmask('##0,00%', {reverse: true, maxlength: false});
+            this.money3(element, true);
         },
 
         money: function(element){
@@ -459,8 +470,9 @@
 
         $('[data-inputmask-restrict="alfanumerico"], [data-inputmask-restrict="alphanumeric"]').arcnetmaskrestricts('alphanumeric')
 
-        var stxPass = $('[data-inputmask-restrictwords], [data-inputmask-restrictwords]').data("inputmask-restrictwords").replace(/\s+/g, '');
-        stxPass = stxPass.substring(14, stxPass.length);
+        var stxPass = $('[data-inputmask-restrictwords], [data-inputmask-restrictwords]').data("inputmask-restrictwords") ? $('[data-inputmask-restrictwords], [data-inputmask-restrictwords]').data("inputmask-restrictwords").replace(/\s+/g, '') : null;
+        if (stxPass != null)
+            stxPass = stxPass.substring(14, stxPass.length);
         $('[data-inputmask-restrictwords]').arcnetmaskrestricts("restrictWords", stxPass);
     });
 
