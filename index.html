@@ -13,7 +13,7 @@
     <script type="text/javascript" src="javascripts/modernizr.js"></script>
     <script type="text/javascript" src="javascripts/jquery-1.10.2.js"></script>
     <script type="text/javascript" src="javascripts/headsmart.min.js"></script>
-    <script type="text/javascript" src="javascripts/arcnet.simple.mask.min.js"></script>
+    <script type="text/javascript" src="javascripts/arcnet.simple.mask.js"></script>
 
       <script type="text/javascript">
       $(document).ready(function () {
@@ -272,13 +272,25 @@
               </div>
 
               <div class="form-group">
-                  <label class="col-sm-2 control-label">Defined Words</label>
+                  <label class="col-sm-2 control-label">Restricted Words</label>
                   <div class="col-sm-10">
                       <input type="text" data-inputmask-restrictwords="qwerty" class="form-control"/>
                       <div class="highlight highlight-bash">
                       <pre>
 &lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask-restrictwords<span class="o">=</span><span class="s2">"qwerty"</span>/&gt;
-<small>Restricts the words in the parameter.</small></pre>
+<small>Restricts the words in parameter.</small></pre>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="form-group">
+                  <label class="col-sm-2 control-label">Accepted Words</label>
+                  <div class="col-sm-10">
+                      <input type="text" data-inputmask-acceptwords="qwerty" class="form-control"/>
+                      <div class="highlight highlight-bash">
+                      <pre>
+&lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask-acceptwords<span class="o">=</span><span class="s2">"qwerty"</span>/&gt;
+<small>Accepts only the words in parameter.</small></pre>
                       </div>
                   </div>
               </div>
@@ -294,6 +306,7 @@
   <span class="k">$(</span><span class="s1">'element'</span><span class="k">)</span>.arcnetmaskrestricts<span class="o">(</span><span class="s1">'alphanumeric'</span><span class="o">)</span><span class="p">;</span>
   <span class="k">$(</span><span class="s1">'element'</span><span class="k">)</span>.arcnetmaskrestricts<span class="o">(</span><span class="s1">'alfanumerico'</span><span class="o">)</span><span class="p">;</span>
   <span class="k">$(</span><span class="s1">'element'</span><span class="k">)</span>.arcnetmaskrestricts<span class="o">(</span><span class="s1">'restrictWords', "words"</span><span class="o">)</span><span class="p">;</span>
+  <span class="k">$(</span><span class="s1">'element'</span><span class="k">)</span>.arcnetmaskrestricts<span class="o">(</span><span class="s1">'acceptWords', "words"</span><span class="o">)</span><span class="p">;</span>
 <span class="o">}</span>
 </pre></div>
 <h2>

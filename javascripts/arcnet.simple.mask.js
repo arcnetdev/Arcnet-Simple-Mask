@@ -334,6 +334,23 @@
                 });
                 return returns;
             });
+        },
+
+        acceptWords: function(element, words){
+            $(element).keypress(function(evt){
+                var returns = true;
+                var letter = String.fromCharCode( evt.keyCode || evt.which );
+                var stxPass = words.replace(/\s+/g, '');
+                var acceptedWords = stxPass.split('');
+                $.each(acceptedWords, function(index, data){
+                    if(letter === data){
+                        returns = true;
+                        return false;
+                    }
+                    returns = false;
+                });
+                return returns;
+            });
         }
     };
 
@@ -430,6 +447,9 @@
                 case 'restrictWords':
                     definedRestricts.restrictWords(this, h);
                     break;
+                case 'acceptWords':
+                    definedRestricts.acceptWords(this, h);
+                    break;
             }
         });
     };
@@ -470,10 +490,11 @@
 
         $('[data-inputmask-restrict="alfanumerico"], [data-inputmask-restrict="alphanumeric"]').arcnetmaskrestricts('alphanumeric')
 
-        var stxPass = $('[data-inputmask-restrictwords], [data-inputmask-restrictwords]').data("inputmask-restrictwords") ? $('[data-inputmask-restrictwords], [data-inputmask-restrictwords]').data("inputmask-restrictwords").replace(/\s+/g, '') : null;
-        if (stxPass != null)
-            stxPass = stxPass.substring(14, stxPass.length);
+        var stxPass = $('[data-inputmask-restrictwords]').data("inputmask-restrictwords") ? $('[data-inputmask-restrictwords]').data("inputmask-restrictwords").replace(/\s+/g, '') : null;
         $('[data-inputmask-restrictwords]').arcnetmaskrestricts("restrictWords", stxPass);
+
+        var stxPass2 = $('[data-inputmask-acceptwords]').data("inputmask-acceptwords") ? $('[data-inputmask-acceptwords]').data("inputmask-acceptwords").replace(/\s+/g, '') : null;
+        $('[data-inputmask-acceptwords]').arcnetmaskrestricts("acceptWords", stxPass2);
     });
 
 })(window.jQuery || window.Zepto);
