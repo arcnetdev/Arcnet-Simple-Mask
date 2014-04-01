@@ -67,9 +67,31 @@ $(document).ready(function(){
 
 ###Reverse Attribute
 With this attribute the mask will be placed from the right to the left (that's why reverse:true is defined).
+```bash
+$(document).ready(function(){
+  $('element').arcnetmask('##0,00%', {reverse: true});
+}
+```
+
+###Maxlength Attribute
+With this attribute you can define the size of the input, how many numbers can be inserted.
+```bash
+$(document).ready(function(){
+  $('element').arcnetmask('money3', {maxlength: 6});
+}
+```
+
+###ThreeDecimals Attribute
+With this attribute the mask will be placed from the right to the left (that's why reverse:true is defined).
+```bash
+$(document).ready(function(){
+  $('element').arcnetmask('money3', {threedecimals: true});
+}
+```
+
 
 ##Mask using data-mask attribute
-To get your mask applied with the data-mask attribute just use it as the same way you use with the $.arcnetmask function. 
+With this attribute you can define if you want to use three or two decimals, by default, it will come "false", in other words, two decimals.
 
 You can put on your own:
 ```bash
