@@ -65,6 +65,7 @@
               <label class="col-sm-2 control-label">Undefined Type</label>
               <div class="col-sm-10">
                   <input type="text" name="field-name" data-inputmask="##-####-###" class="form-control"/>
+                  <input type="text" name="field-name" data-inputmasklength="4" id="teste-loco" class="form-control"/>
                   <div class="highlight highlight-bash">
                   <pre>
 &lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"###-####-###"</span> /&gt;</pre>
@@ -158,7 +159,7 @@
               <div class="form-group">
                   <label class="col-sm-2 control-label">Money2 </label>
                   <div class="col-sm-10">
-                      <input type="text" data-inputmask="dinheiro3" class="form-control"/>
+                      <input type="text" data-inputmasklength="4" data-inputmask="dinheiro3" class="form-control"/>
                       <div class="highlight highlight-bash">
                       <pre>
 &lt;input <span class="nb">type</span><span class="o">=</span><span class="s2">"text"</span> data-inputmask<span class="o">=</span><span class="s2">"dinheiro3"</span>/&gt;
@@ -377,6 +378,35 @@
 <a name="reverse-attribute" class="anchor" href="#reverse-attribute"><span class="octicon octicon-link"></span></a>Reverse Attribute</h3>
 
 <p>With this attribute the mask will be placed from the right to the left (that's why reverse:true is defined).</p>
+        <div class="col-sm-10">
+            <input type="text" id="demo-reverse" class="form-control"/>
+            <div class="highlight highlight-bash"><pre><span class="k">$(</span>document<span class="k">)</span>.ready<span class="o">(</span><span class="k">function</span><span class="o">(){</span>
+  <span class="k">$(</span><span class="s1">'element'</span><span class="k">)</span>.arcnetmask<span class="o">(</span><span class="s1">'##0,00%'</span>, <span class="o">{</span>reverse: <span class="nb">true</span><span class="o">})</span><span class="p">;</span>
+<span class="o">}</span>
+</pre></div>
+        </div>
+<h3>
+    <a name="maxlength-attribute" class="anchor" href="#reverse-attribute"><span class="octicon octicon-link"></span></a>Maxlength Attribute</h3>
+
+<p>With this attribute you can define the size of the input, how many numbers can be inserted.</p>
+        <div class="col-sm-10">
+            <input type="text" id="demo-maxlength" class="form-control"/>
+            <div class="highlight highlight-bash"><pre><span class="k">$(</span>document<span class="k">)</span>.ready<span class="o">(</span><span class="k">function</span><span class="o">(){</span>
+  <span class="k">$(</span><span class="s1">'element'</span><span class="k">)</span>.arcnetmask<span class="o">(</span><span class="s1">'money3'</span>, <span class="o">{</span>maxlength: <span class="nb">6</span><span class="o">})</span><span class="p">;</span>
+<span class="o">}</span>
+</pre></div>
+        </div>
+<h3>
+    <a name="threedecimals-attribute" class="anchor" href="#reverse-attribute"><span class="octicon octicon-link"></span></a>ThreeDecimals Attribute</h3>
+        <div class="col-sm-10">
+            <input type="text" id="demo-threedecimals" class="form-control"/>
+            <div class="highlight highlight-bash"><pre><span class="k">$(</span>document<span class="k">)</span>.ready<span class="o">(</span><span class="k">function</span><span class="o">(){</span>
+  <span class="k">$(</span><span class="s1">'element'</span><span class="k">)</span>.arcnetmask<span class="o">(</span><span class="s1">'money3'</span>, <span class="o">{</span>threedecimals: <span class="nb">true</span><span class="o">})</span><span class="p">;</span>
+<span class="o">}</span>
+</pre></div>
+        </div>
+<p>With this attribute you can define if you want to use three or two decimals, by default, it will come "false", in other words, two decimals.</p>
+
       </section>
 
       <footer>
@@ -403,6 +433,11 @@
               var pageTracker = _gat._getTracker("arcnetdev arcnet desenvolvimento open source livre jquery mascara mask cep telefonemask restrição restrict numbers alfanumerico");
             pageTracker._trackPageview();
             } catch(err) {}
+
+              //DEMOS
+              $('#demo-maxlength').arcnetmask('money3', {maxlength: 6});
+              $('#demo-threedecimals').arcnetmask('money3', {threedecimals: true});
+              $('#demo-reverse').arcnetmask('##0,00%', {reverse: true})
           </script>
   </body>
 </html>
