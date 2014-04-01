@@ -126,6 +126,9 @@ You also can restrict some letters and types.
 
 <input type="text" data-inputmask-restrictwords="qwerty"/> //Restricts the letters in the parameter
 <input type="text" data-inputmask-restrictwords="asdfg"/>
+
+<input type="text" data-inputmask-acceptwords="qwerty"/> //Accepts only the words in parameter
+<input type="text" data-inputmask-acceptwords="asdfg"/>
 ```
 
 ```bash
@@ -137,6 +140,7 @@ $(document).ready(function(){
   $('element').arcnetunmaskrestricts('alphanumeric')
   $('element').arcnetunmaskrestricts('alfanumerico');
   $('element').arcnetunmaskrestricts("restrictWords", "words");
+  $('element').arcnetunmaskrestricts("acceptWords", "words");
 }
 ```
 
