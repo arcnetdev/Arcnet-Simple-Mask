@@ -144,13 +144,18 @@
             return true;
         },
 
-        money3 : function (element, isPercent) {
+        money3 : function (element, isPercent, options) {
             var percent = "";
             if(isPercent){
                 percent = "%";
             }
+            if (options != null){
+                var threeDecimals = options.threedecimals;
+                var maxlength = options.maxlength;
+            }
 
-            $(element).val().length === 0 ? $(element).val("0.00" + percent) : $(element).val();
+            var totalOfZeros = (threeDecimals) ? "000" : "00"
+            $(element).val().length === 0 ? $(element).val("0." + totalOfZeros + percent) : $(element).val();
             $(element).keypress(function(evento){
             if (!definedMaskFunctions.isNumber(evento))
                 return false;
@@ -175,18 +180,18 @@
                     switch (resultado.length) {
                         case 0:
                             var end = resultado;
-                            r = (posto) ? "0,000" : "0,00";
+                            r = (threeDecimals) ? "0,000" : "0,00";
                             break;
                         case 1:
                             var end = resultado;
-                            r = (posto) ? ("0,00" + end) : ("0,0" + end);
+                            r = (threeDecimals) ? ("0,00" + end) : ("0,0" + end);
                             break;
                         case 2:
                             var end = resultado;
-                            r = (posto) ? ("0,0" + end) : ("0," + end);
+                            r = (threeDecimals) ? ("0,0" + end) : ("0," + end);
                             break;
                         case 3:
-                            if (posto) {
+                            if (threeDecimals) {
                                 var end = resultado;
                                 r = "0," + end;
                             } else {
@@ -196,15 +201,20 @@
                             }
                             break;
                         default:
-                            var ini = resultado.substring(0, (resultado.length - ((posto) ? 3 : 2)));
-                            var end = resultado.substring(resultado.length - ((posto) ? 3 : 2));
+                            var ini = resultado.substring(0, (resultado.length - ((threeDecimals) ? 3 : 2)));
+                            var end = resultado.substring(resultado.length - ((threeDecimals) ? 3 : 2));
                             r = ini + "," + end;
                             break;
                     }
-                    $(this).val(r + percent);
-                    if (resultado.length >= 6)
-                        $(this).arcnetmask("#.##0,00" + percent, {reverse: true, maxlength: false});
-                    return false;
+                    var totalNumeros = resultado.length - 1;
+                    if(totalNumeros < maxlength || maxlength == undefined){
+                        $(this).val(r + percent);
+                        if (resultado.length >= 6)
+                            $(this).arcnetmask("#.##0," + totalOfZeros + percent, {reverse: true, maxlength: false});
+                        return false;
+                    }else{
+                        return false;
+                    }
                 }
             }
             }).keydown(function(evento){
@@ -218,14 +228,14 @@
                     $(this).val(input.substring(0, input.length - 2) + percent);
                     return false;
                 }
-                if(size <= 3){
+                if(size <= (threeDecimals ? 4 : 3)){
                     if (keyCode === 8){
                         switch  (size - 1){
                             case 3:
-                                val = "0,0" + number
+                                val = (threeDecimals ? "0," : "0,0") + number
                                 break;
                             case 2:
-                                val = "0," + number
+                                val = (threeDecimals ? "0,0" : "0,") + number
                                 break;
                         }
                         $(this).val(val + percent);
@@ -278,8 +288,8 @@
             $(element).arcnetmask("00000-000");
         },
 
-        percent: function(element){
-            this.money3(element, true);
+        percent: function(element, maxlength){
+            this.money3(element, false, maxlength);
         },
 
         money: function(element){
@@ -409,16 +419,16 @@
                     definedMaskFunctions.money(this);
                     break;
                 case 'money3':
-                    definedMaskFunctions.money3(this);
+                    definedMaskFunctions.money3(this, false, h);
                     break;
                 case 'dinheiro3':
-                    definedMaskFunctions.money3(this);
+                    definedMaskFunctions.money3(this, false, h);
                     break;
                 case 'porcentagem':
-                    definedMaskFunctions.percent(this);
+                    definedMaskFunctions.percent(this, h);
                     break;
                 case 'percent':
-                    definedMaskFunctions.percent(this);
+                    definedMaskFunctions.percent(this, h);
                     break;
                 default:
                     f(this).data("mask", new y(this, a, h));
@@ -453,6 +463,16 @@
             }
         });
     };
+
+    f.fn.arcnetmasklength  = function (a, h) {
+        return this.each(function () {
+            try {
+                lengths.setLength(this, a);
+            } catch (a) {}
+        });
+    };
+
+
     f.fn.cleanVal = function () {
         return f(this).data("mask").getCleanVal()
     };
@@ -464,9 +484,10 @@
         a.mask(a.attr("data-mask"), h)
     })
     $(window).bind("load", function() {
-        $('[data-inputmask="celular"], [data-inputmask="cellphone"]').arcnetmask("cellphone")
+        $('[data-inputmasklength]').arcnetmasklength($('[data-inputmasklength]').data("inputmasklength"));
 
         $('[data-inputmask^="#"]').arcnetmask($('[data-inputmask^="#"]').data("inputmask"));
+        $('[data-inputmask="celular"], [data-inputmask="cellphone"]').arcnetmask("cellphone")
         $('[data-inputmask="cnpj"]').arcnetmask("cnpj");
         $('[data-inputmask="cpf"]').arcnetmask("cpf");
         $('[data-inputmask="telefone"], [data-inputmask="phone"]').arcnetmask("telefone");
@@ -495,6 +516,7 @@
 
         var stxPass2 = $('[data-inputmask-acceptwords]').data("inputmask-acceptwords") ? $('[data-inputmask-acceptwords]').data("inputmask-acceptwords").replace(/\s+/g, '') : null;
         $('[data-inputmask-acceptwords]').arcnetmaskrestricts("acceptWords", stxPass2);
+
     });
 
 })(window.jQuery || window.Zepto);
